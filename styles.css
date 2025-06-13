@@ -313,6 +313,15 @@ footer ul li {
 }
 
 @media (max-width: 768px) {
+    .navbar-brand{
+        display: flex;
+        align-items: center;
+    }
+
+    .logo{
+        width: 40px;
+        height: auto;
+    }
     .hero-content h1 {
         font-size: 2.5rem;
     }
