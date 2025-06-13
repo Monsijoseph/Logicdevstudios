@@ -1,0 +1,323 @@
+/* Import Orbitron font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --primary-bg: #000;
+    --primary-text: #fff;
+    --secondary-text: #ccc;
+    --accent-color: #317ef1; /* Updated to your blue color */
+    --icon-color: #ff6b00; /* Orange for icons - complements the blue well */
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Readable body font */
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    overflow-x: hidden;
+}
+
+/* Orbitron for all headings */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.section-title,
+.card-title,
+.accordion-button,
+.team-member h4,
+.modal-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700; /* Bold */
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    background-color: #1a6bdf;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(49, 126, 241, 0.3);
+}
+.btn-linkedin{
+    background-color: #0077b5;
+    color: var(--primary-text);
+    border: none;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.btn-linkedin:hover{
+    background-color: #006097;
+    color: var(--primary-text);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgb(0, 119, 181, 0.3);
+}
+.btn-outline-light:hover {
+    color: var(--primary-bg);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--primary-text);
+    border: 1px solid var(--accent-color);
+    transition: all 0.3s;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Gallery Styles */
+.gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-color);
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Video Card Styles */
+.video-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.video-card .card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-card:hover .card-body {
+    opacity: 1;
+}
+
+/* Lightbox Overrides */
+.lightbox .lb-image {
+    border: 5px solid var(--accent-color);
+}
+
+.lb-data .lb-caption {
+    font-size: 16px;
+    color: var(--primary-text);
+}
+
+.lb-data .lb-close {
+    filter: invert(1);
+}
+
+.skill-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.skill-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.skill-item h4 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.team-member h4 {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.team-member p {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+/* Footer Styles */
+.hover-blue {
+    transition: color 0.3s ease;
+}
+
+.hover-blue:hover {
+    color: #317ef1 !important; /* Your specified blue color */
+}
+
+.social-icons a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+}
+
+footer h5 {
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #317ef1;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.accordion-button {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--primary-bg);
+    font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-bg);
+    font-size: 1.5rem;
+}
+
+.accordion-body {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.project-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.project-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tech-tool {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin: 0.5rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
