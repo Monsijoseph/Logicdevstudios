@@ -38,9 +38,8 @@
     </script>
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
     <!-- Navigation -->
-     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html"><img src="images/logicdev logo.png" class="logo" alt="logic dev logo"  width="104" height="104">RC NO: 8109004</a>
            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,30 +90,67 @@
         </section>
 
         <!-- Featured Projects Section -->
-        <section class="py-5">
+        <section class="py-5" aria-labelledby="featured-projects-title">
             <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <img src="images/portfolio/prince4.jpg" class="card-img-down" alt="OTITE REBORN">
-                            <div class="card-body">
-                                <h5 class="card-title">OTITE REBORN</h5>
-                            <p class="card-text">A cultural action-adventure RPG inspired by Nigerian traditions and African storytelling.</p>
-                                <a href="portfolio.html" class="btn btn-sm btn-primary">Learn More</a>
+                <h2 id="featured-projects-title" class="section-title">Featured Projects</h2>
+                <div id="featuredProjectsCarousel" class="carousel slide featured-projects-carousel" data-bs-ride="carousel" data-bs-interval="6000" data-bs-pause="hover" aria-label="Featured projects carousel" aria-roledescription="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#featuredProjectsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1: BLIND SPOT"></button>
+                        <button type="button" data-bs-target="#featuredProjectsCarousel" data-bs-slide-to="1" aria-label="Slide 2: OTITE REBORN"></button>
+                        <button type="button" data-bs-target="#featuredProjectsCarousel" data-bs-slide-to="2" aria-label="Slide 3: Escape Protocol"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" aria-roledescription="slide" aria-label="1 of 3">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img src="images/portfolio/blind spot icon.png" class="card-img-down" alt="BLIND SPOT">
+                                        <div class="card-body">
+                                            <h5 class="card-title">BLIND SPOT</h5>
+                                            <p class="card-text">A cultural action-adventure RPG, PC, consoles and digital stores.</p>
+                                            <a href="portfolio.html" class="btn btn-sm btn-primary">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item active" aria-roledescription="slide" aria-label="2 of 3">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img src="images/portfolio/prince4.jpg" class="card-img-down" alt="OTITE REBORN">
+                                        <div class="card-body">
+                                            <h5 class="card-title">OTITE REBORN</h5>
+                                            <p class="card-text">A cultural action-adventure RPG inspired by Nigerian traditions and African storytelling.</p>
+                                            <a href="portfolio.html" class="btn btn-sm btn-primary">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item" aria-roledescription="slide" aria-label="3 of 3">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img src="images/portfolio/escape protocol1.png" class="card-img-down" alt="Escape Protocol">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Escape Protocol</h5>
+                                            <p class="card-text">Side-Scroller Game Action-adventure RPG</p>
+                                            <a href="portfolio.html" class="btn btn-sm btn-primary">Learn More</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <img src="images/portfolio/escape protocol1.png" class="card-img-down" alt="Escape Protocol">
-                            <div class="card-body">
-                                <h5 class="card-title">Escape Protocol</h5>
-                                <p class="card-text">Side-Scroller Game Action-adventure RPG</p>
-                                <a href="portfolio.html" class="btn btn-sm btn-primary">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#featuredProjectsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous project</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#featuredProjectsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next project</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -368,7 +404,8 @@
                 <h5 class="text-uppercase mb-4" style="font-family: 'Orbitron', sans-serif;">Projects</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="portfolio.html#otite" class="text-white text-decoration-none hover-blue">OTITE REBORN</a></li>
-                    <li class="mb-2"><a href="portfolio.html#otite" class="text-white text-decoration-none hover-blue">Escape Protocol</a></li>
+                    <li class="mb-2"><a href="portfolio.html#escape" class="text-white text-decoration-none hover-blue">Escape Protocol</a></li>
+                    <li class="mb-2"><a href="portfolio.html#blind" class="text-white text-decoration-none hover-blue">Blind Spot</a></li>
                 </ul>
             </div>
 

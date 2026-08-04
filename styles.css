@@ -116,6 +116,27 @@ h1, h2, h3, h4, h5, h6,
     background-color: var(--accent-color);
 }
 
+.featured-projects-carousel .carousel-control-prev,
+    .featured-projects-carousel .carousel-control-next {
+       width: 5%;
+}
+
+.featured-projects-carousel .carousel-indicators {
+    position: static;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.featured-projects-carousel .carousel-indicators [data-bs-target] {
+    background-color: var(--accent-color, #fff);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .featured-projects-carousel .carousel-item {
+        transition: none;
+    }
+}
+
 .card {
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--primary-text);
@@ -373,6 +394,8 @@ body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after 
     .pipeline { grid-template-columns: 1fr; }
     .feature-card { padding: 1.5rem; }
 }
+
+@media (max-width: 991.98px) { .navbar-nav { text-align: center; } }
 
 .team-member h4 {
     margin-top: 1rem;
