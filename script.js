@@ -1,12 +1,13 @@
-// Navbar background change on scroll
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-    } else {
-        navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-    }
-});
+// Navbar gets a solid background + shadow once the page is scrolled,
+// and stays translucent over the hero at the top.
+const siteNavbar = document.querySelector('.navbar');
+if (siteNavbar) {
+    const toggleNavbarState = () => {
+        siteNavbar.classList.toggle('is-scrolled', window.scrollY > 50);
+    };
+    toggleNavbarState();
+    window.addEventListener('scroll', toggleNavbarState, { passive: true });
+}
 
 // Initialize Bootstrap tooltips only when Bootstrap is available.
 if (typeof bootstrap !== 'undefined') {
@@ -47,23 +48,32 @@ videoCards.forEach(card => {
     });
 });
 
-// Add animation to skill items when they come into view
-const skillItems = document.querySelectorAll('.skill-item');
+// Fade + slide elements in as they scroll into view. Any element with the
+// `.reveal` class (see styles.css) is picked up automatically, so new
+// sections/cards get the effect without extra JS.
+const revealTargets = document.querySelectorAll(
+    '.reveal, .skill-item, .feature-card, .devlog-card, .lore-card, .press-asset, .stat-card, .team-member'
+);
 
-const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
+            // Small stagger so grids of cards don't all pop in at once.
+            const delay = (entry.target.dataset.revealIndex || 0) * 60;
+            setTimeout(() => entry.target.classList.add('is-visible'), delay);
+            revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 }) : null;
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }) : null;
 
-skillItems.forEach(item => {
-    item.style.opacity = 0;
-    item.style.transform = 'translateY(20px)';
-    item.style.transition = 'all 0.5s ease';
-    if (observer) observer.observe(item);
+revealTargets.forEach((item, index) => {
+    item.classList.add('reveal');
+    item.dataset.revealIndex = index % 6; // stagger resets every 6 for grid rows
+    if (revealObserver) {
+        revealObserver.observe(item);
+    } else {
+        item.classList.add('is-visible');
+    }
 });
 
 const year = document.getElementById('current-year');
@@ -82,6 +92,4 @@ if (motionToggle) {
         localStorage.setItem('logicdev-reduced-motion', reduced);
     });
 }
-
-//  document.getElementById('year').textContent = new Date().getFullYear();
 

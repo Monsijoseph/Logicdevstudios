@@ -30,8 +30,15 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .navbar {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(49, 126, 241, 0);
+    transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.navbar.is-scrolled {
+    background-color: rgba(0, 0, 0, 0.92);
     border-bottom: 1px solid var(--accent-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .35);
 }
 
 .navbar-brand {
@@ -48,19 +55,227 @@ h1, h2, h3, h4, h5, h6,
     text-align: center;
 }
 
+/*INDEX PAGE HERO CAROUSEL*/
+.index-hero{
+
+    position:relative;
+}
+
+.index-hero .carousel-item{
+
+    height:100vh;
+    min-height:700px;
+    position:relative;
+}
+
+.index-hero .hero-image{
+
+    width:100%;
+    height:100vh;
+    min-height:700px;
+    object-fit:cover;
+}
+
+.index-hero .hero-overlay{
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        rgba(0,0,0,.72),
+        rgba(0,0,0,.60)
+    );
+
+    z-index:1;
+}
+
+.index-hero .carousel-caption{
+
+    z-index:2;
+
+    left:50%;
+
+    top:50%;
+
+    bottom:auto;
+
+    transform:translate(-50%,-50%);
+
+    width:90%;
+
+    max-width:800px;
+
+    text-align:center;
+}
+
+.index-hero h1{
+
+    font-size:clamp(2.4rem,5vw,4.7rem);
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
+
+    color:#fff;
+}
+
+.index-hero p{
+
+    font-size:clamp(1rem,2vw,1.25rem);
+
+    line-height:1.8;
+
+    color:#f5f5f5;
+
+    margin-bottom:35px;
+}
+
+.index-hero .hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+}
+
+.index-hero .hero-buttons .btn{
+
+    padding:14px 36px;
+
+    border-radius:50px;
+
+    font-weight:600;
+}
+
+.index-hero .carousel-fade .carousel-item{
+
+    transition:opacity 1s ease-in-out;
+}
+
+/* Tablet */
+
+@media (max-width:992px){
+
+.index-hero .carousel-caption{
+
+width:92%;
+
+}
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.index-hero .carousel-item{
+
+height:100svh;
+
+}
+
+.index-hero .hero-image{
+
+height:100svh;
+
+}
+
+.index-hero h1{
+
+font-size:2.4rem;
+
+}
+
+.index-hero p{
+
+font-size:1rem;
+
+}
+
+.index-hero .hero-buttons{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.index-hero .hero-buttons .btn{
+
+width:100%;
+
+max-width:320px;
+
+}
+
+}
+
+/* Small phones */
+
+@media (max-width:480px){
+
+.index-hero h1{
+
+font-size:2rem;
+
+}
+
+.index-hero p{
+
+font-size:.95rem;
+
+}
+
+}
+
+.playstore-btn{
+
+    white-space:nowrap;
+
+}
+
+@media (max-width:768px){
+
+    .playstore-btn{
+
+        max-width:240px;
+        padding:12px 18px;
+        font-size:.9rem;
+
+    }
+
+}
+
 .hero-content h1 {
-    font-size: 4rem;
+    font-size: clamp(2.1rem, 6vw, 4rem);
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    animation: heroRise .8s ease both;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
     max-width: 700px;
     margin: 0 auto 2rem;
     font-weight: 300;
     line-height: 1.6;
+    animation: heroRise .8s ease .15s both;
+}
+
+.hero-content .d-flex {
+    animation: heroRise .8s ease .3s both;
+}
+
+.hero-section {
+    min-height: 100svh;
 }
 
 .btn-primary {
@@ -260,6 +475,43 @@ body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after 
     transition-duration: .01ms !important;
 }
 
+/* Compensate for the fixed navbar when jumping to an in-page anchor,
+   including cross-page links like portfolio.html#otite. */
+section[id],
+main[id] {
+    scroll-margin-top: 90px;
+}
+
+/* Reveal-on-scroll utility: elements fade/slide in once, triggered via
+   IntersectionObserver in script.js. Respects reduced-motion automatically
+   through the .reduce-motion override above. */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes heroRise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-content h1, .hero-content p, .hero-content .d-flex {
+        animation: none;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 .section-kicker {
     color: var(--accent-color);
     font-family: 'Orbitron', sans-serif;
@@ -288,7 +540,8 @@ body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after 
 .lore-card summary::-webkit-details-marker { display: none; }
 .lore-card summary i { color: var(--accent-color); font-size: 1.25rem; margin-right: .5rem; vertical-align: middle; }
 .lore-card p { color: var(--secondary-text); font-size: .88rem; line-height: 1.6; margin: .8rem 0 0; }
-.devlog-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 1.5rem; }
+.devlog-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 1.5rem; transition: border-color .25s ease, transform .25s ease; }
+.devlog-card:hover { border-color: var(--accent-color); transform: translateY(-4px); }
 .devlog-card h3 { font-size: 1.1rem; margin: 1rem 0 .7rem; }
 .devlog-card p { color: var(--secondary-text); }
 .devlog-card time, .devlog-tag { color: var(--accent-color); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
@@ -348,6 +601,12 @@ body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after 
     min-height: 112px;
     padding: 1.25rem .75rem;
     text-align: center;
+    transition: border-color .25s ease, transform .25s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
 }
 
 .stat-card strong {
@@ -478,12 +737,22 @@ footer ul li {
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--primary-bg);
     font-weight: bold;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.accordion-button::after {
+    filter: invert(1);
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--primary-bg);
-    font-size: 1.5rem;
+    background-color: rgba(49, 126, 241, 0.18);
+    color: var(--accent-color);
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 .2rem rgba(49, 126, 241, .35);
 }
 
 .accordion-body {
